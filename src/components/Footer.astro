@@ -3,46 +3,48 @@ import contact from '../data/contact.json';
 const an = new Date().getFullYear();
 ---
 
-<footer class="bg-stone-900 text-stone-300 mt-20">
-  <div class="max-w-5xl mx-auto px-4 py-12 grid gap-8 md:grid-cols-4">
+<footer class="bg-white border-t border-stone-100 mt-32">
+  <div class="max-w-6xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-4">
 
     <div class="md:col-span-1">
-      <img src="/images/uploads/logo.png" alt="Pinro logo" class="h-12 w-auto mb-3" />
-      <p class="text-sm leading-relaxed text-stone-400">Producție și montaj lemn masiv: trepte, uși, ferestre, mic mobilier.</p>
+      <img src="/images/uploads/logo.png" alt="Pinro" class="h-10 w-auto mb-4" />
+      <p class="text-sm text-stone-400 leading-relaxed">
+        Producție și montaj trepte din lemn masiv.<br/>Baciu, jud. Cluj.
+      </p>
     </div>
 
     <div>
-      <p class="font-semibold text-white mb-3">Produse</p>
-      <ul class="text-sm space-y-1.5 text-stone-400">
-        <li><a href="/produse/scari-drepte-beton" class="hover:text-white transition-colors">Scări drepte pe beton</a></li>
-        <li><a href="/produse/scari-drepte-metal" class="hover:text-white transition-colors">Scări drepte pe metal</a></li>
-        <li><a href="/produse/scari-unghi-beton" class="hover:text-white transition-colors">Scări în unghi pe beton</a></li>
-        <li><a href="/produse/scari-unghi-metal" class="hover:text-white transition-colors">Scări în unghi pe metal</a></li>
+      <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">Produse</p>
+      <ul class="space-y-2 text-sm text-stone-500">
+        <li><a href="/produse/scari-drepte-beton" class="hover:text-stone-900 transition-colors">Scări drepte pe beton</a></li>
+        <li><a href="/produse/scari-drepte-metal" class="hover:text-stone-900 transition-colors">Scări drepte pe metal</a></li>
+        <li><a href="/produse/scari-unghi-beton" class="hover:text-stone-900 transition-colors">Scări în unghi pe beton</a></li>
+        <li><a href="/produse/scari-unghi-metal" class="hover:text-stone-900 transition-colors">Scări în unghi pe metal</a></li>
       </ul>
     </div>
 
     <div>
-      <p class="font-semibold text-white mb-3">Contact</p>
-      <ul class="text-sm space-y-2 text-stone-400">
-        <li><a href={`tel:${contact.telefon.replace(/\s/g,'')}`} class="hover:text-white transition-colors">{contact.telefon}</a></li>
-        <li><a href={`mailto:${contact.email}`} class="hover:text-white transition-colors">{contact.email}</a></li>
+      <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">Contact</p>
+      <ul class="space-y-2 text-sm text-stone-500">
+        <li><a href={`tel:${contact.telefon.replace(/\s/g,'')}`} class="hover:text-stone-900 transition-colors">{contact.telefon}</a></li>
+        <li><a href={`mailto:${contact.email}`} class="hover:text-stone-900 transition-colors">{contact.email}</a></li>
         <li class="leading-snug">{contact.adresa}</li>
         <li>{contact.program}</li>
       </ul>
     </div>
 
     <div>
-      <p class="font-semibold text-white mb-3">Urmărește-ne</p>
-      <ul class="text-sm space-y-2 text-stone-400">
-        {contact.facebook && <li><a href={contact.facebook} target="_blank" rel="noopener" class="hover:text-white transition-colors">Facebook</a></li>}
-        {contact.instagram && <li><a href={contact.instagram} target="_blank" rel="noopener" class="hover:text-white transition-colors">Instagram</a></li>}
-        {contact.youtube && <li><a href={contact.youtube} target="_blank" rel="noopener" class="hover:text-white transition-colors">YouTube</a></li>}
-        {contact.twitter && <li><a href={contact.twitter} target="_blank" rel="noopener" class="hover:text-white transition-colors">X (Twitter)</a></li>}
+      <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">Urmărește-ne</p>
+      <ul class="space-y-2 text-sm text-stone-500">
+        {contact.facebook  && <li><a href={contact.facebook}  target="_blank" rel="noopener" class="hover:text-stone-900 transition-colors">Facebook</a></li>}
+        {contact.instagram && <li><a href={contact.instagram} target="_blank" rel="noopener" class="hover:text-stone-900 transition-colors">Instagram</a></li>}
+        {contact.youtube   && <li><a href={contact.youtube}   target="_blank" rel="noopener" class="hover:text-stone-900 transition-colors">YouTube</a></li>}
+        {contact.twitter   && <li><a href={contact.twitter}   target="_blank" rel="noopener" class="hover:text-stone-900 transition-colors">X (Twitter)</a></li>}
       </ul>
     </div>
 
   </div>
-  <div class="border-t border-stone-800 text-center text-xs text-stone-500 py-4">
-    © {an} SC PINRO SRL · Strada Cosmos nr. 8, Baciu, jud. Cluj · CIF: —
+  <div class="border-t border-stone-100 text-center text-xs text-stone-400 py-5">
+    © {an} SC PINRO SRL · Toate drepturile rezervate.
   </div>
 </footer>
