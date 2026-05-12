@@ -12,74 +12,77 @@ if (!produs) return Astro.redirect('/produse');
 ---
 
 <Layout title={produs.titlu} descriere={produs.descriereScurta}>
-  <div class="max-w-6xl mx-auto px-6 py-16">
 
-    <a href="/produse" class="text-xs text-stone-400 tracking-wide hover:text-stone-900 transition-colors mb-10 inline-block">← Înapoi la produse</a>
+  <div class="max-w-4xl mx-auto px-4 py-12">
 
-    <!-- Hero imagine -->
-    <div class="aspect-video md:aspect-[16/7] overflow-hidden bg-stone-100 mb-12">
-      <img src={produs.imagineHero} alt={produs.titlu} class="w-full h-full object-cover" />
-    </div>
+    <a href="/produse" class="text-sm text-lemn-600 hover:underline mb-6 inline-block">← Înapoi la produse</a>
 
-    <div class="grid md:grid-cols-3 gap-16">
+    <h1 class="text-3xl font-bold mb-3">{produs.titlu}</h1>
+    <p class="text-stone-500 text-lg mb-8">{produs.descriereScurta}</p>
 
-      <!-- Stânga: descriere -->
+    <!-- Imagine hero -->
+    <img
+      src={produs.imagineHero}
+      alt={produs.titlu}
+      class="w-full rounded-xl shadow-sm mb-6 object-cover max-h-96"
+    />
+
+    <!-- Galerie -->
+    {produs.galerie.length > 0 && (
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-10">
+        {produs.galerie.map((foto) => (
+          <img src={foto} alt={produs.titlu} class="rounded-lg w-full object-cover aspect-video" />
+        ))}
+      </div>
+    )}
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Descriere -->
       <div class="md:col-span-2">
-        <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Produs</p>
-        <h1 class="font-heading text-4xl text-stone-900 mb-6">{produs.titlu}</h1>
-
-        <div class="text-stone-600 text-base leading-relaxed space-y-4">
+        <h2 class="text-xl font-bold mb-4">Despre produs</h2>
+        <div class="prose prose-stone max-w-none text-stone-700 leading-relaxed">
           {produs.descriere.split('\n\n').map((para) => (
-            <p set:html={para.replace(/\*\*(.*?)\*\*/g, '<strong class="text-stone-900">$1</strong>')} />
+            <p class="mb-4" set:html={para.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')} />
           ))}
         </div>
-
-        <!-- Galerie -->
-        {produs.galerie.length > 0 && (
-          <div class="grid grid-cols-2 gap-3 mt-10">
-            {produs.galerie.map((foto) => (
-              <div class="overflow-hidden aspect-video bg-stone-100">
-                <img src={foto} alt={produs.titlu} class="w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
-      <!-- Dreapta: specificații + CTA -->
+      <!-- Specificații + CTA -->
       <div>
-        <div class="border-t border-stone-200 pt-8 mb-10">
-          <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-6">Specificații</p>
-          <dl class="space-y-4">
+        <div class="bg-stone-50 rounded-xl p-5 mb-6">
+          <h2 class="font-bold text-lg mb-4">Specificații</h2>
+          <dl class="space-y-2">
             {produs.specificatii.map((spec) => (
-              <div>
+              <div class="flex flex-col">
                 <dt class="text-xs text-stone-400 uppercase tracking-wide">{spec.label}</dt>
-                <dd class="text-stone-800 mt-0.5">{spec.valoare}</dd>
+                <dd class="text-stone-800 font-medium text-sm">{spec.valoare}</dd>
               </div>
             ))}
           </dl>
         </div>
 
-        <div class="border-t border-stone-200 pt-8">
-          <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-4">Deviz gratuit</p>
-          <p class="text-stone-500 text-sm mb-6 leading-relaxed">Răspundem în aceeași zi lucrătoare cu un deviz personalizat.</p>
+        <div class="bg-lemn-600 text-white rounded-xl p-5 text-center">
+          <p class="font-semibold mb-1">Vrei un deviz?</p>
+          <p class="text-lemn-100 text-sm mb-4">Răspundem în aceeași zi lucrătoare.</p>
           <a
             href={`https://wa.me/40758287719?text=Bun%C4%83%20ziua%2C%20a%C8%99%20dori%20un%20deviz%20pentru%20${encodeURIComponent(produs.titlu)}.`}
             target="_blank"
             rel="noopener"
-            class="block border border-stone-900 text-stone-900 text-sm text-center py-3 px-6 hover:bg-stone-900 hover:text-white transition-colors mb-3"
+            class="block bg-white text-lemn-700 font-semibold py-2 rounded hover:bg-lemn-50 transition-colors text-sm"
           >
             Cere ofertă pe WhatsApp
           </a>
           <a
             href="tel:0758287719"
-            class="block text-center text-sm text-stone-500 hover:text-stone-900 transition-colors"
+            class="block mt-2 text-lemn-100 hover:text-white text-sm transition-colors"
           >
-            0758 287 719
+            📞 0758 287 719
           </a>
         </div>
       </div>
 
     </div>
   </div>
+
 </Layout>

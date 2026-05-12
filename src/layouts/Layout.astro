@@ -7,7 +7,7 @@ interface Props {
   descriere?: string;
 }
 
-const { title, descriere = 'SC Pinro SRL — Producție și montaj trepte din lemn masiv pe suport de beton sau metal. Baciu, Cluj.' } = Astro.props;
+const { title, descriere = 'Producție și montaj trepte din lemn pe suport de beton sau metal. Calitate, precizie, livrare la timp.' } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,10 +16,10 @@ const { title, descriere = 'SC Pinro SRL — Producție și montaj trepte din le
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={descriere} />
-    <title>{title} | Pinro</title>
+    <title>{title} | Pinro Trepte</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
-  <body class="bg-white text-stone-900 font-sans antialiased">
+  <body class="bg-stone-50 text-stone-900 font-sans antialiased">
     <Header />
     <main>
       <slot />

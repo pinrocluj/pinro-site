@@ -18,8 +18,7 @@
       "Bash(Get-ChildItem -Recurse \"C:\\\\Users\\\\vaida\\\\My Drive \\(transilvaniamicrofarm@gmail.com\\)\\\\Site\\\\Content V2\")",
       "Bash(Select-Object FullName, Length)",
       "Bash(Format-Table -AutoSize)",
-      "PowerShell(Copy-Item *)",
-      "WebFetch(domain:milygroup.com)"
+      "PowerShell(Copy-Item *)"
     ]
   }
 }

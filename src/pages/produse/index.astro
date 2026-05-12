@@ -2,35 +2,56 @@
 import Layout from '../../layouts/Layout.astro';
 
 const categorii = [
-  { titlu: 'Scări drepte pe beton', href: '/produse/scari-drepte-beton', imagine: '/images/uploads/cat-scari-drepte-beton-(1).JPEG', descriere: 'Trepte din stejar masiv montate pe structuri de beton turnat.' },
-  { titlu: 'Scări drepte pe metal', href: '/produse/scari-drepte-metal',  imagine: '/images/uploads/cat-scari-drepte-metal-(4).JPEG',  descriere: 'Trepte din stejar masiv adaptate pentru structuri metalice.' },
-  { titlu: 'Scări în unghi pe beton',href: '/produse/scari-unghi-beton', imagine: '/images/uploads/cat-scari-unghi-beton-(8).JPEG',   descriere: 'Scări cu podest sau întoarcere, montate pe suport de beton.' },
-  { titlu: 'Scări în unghi pe metal', href: '/produse/scari-unghi-metal',imagine: '/images/uploads/cat-scari-unghi-metal-(5).JPEG',   descriere: 'Scări cu întoarcere pe structuri metalice.' },
+  {
+    titlu: 'Scări drepte pe beton',
+    href: '/produse/scari-drepte-beton',
+    imagine: '/images/uploads/cat-scari-drepte-beton-(1).JPEG',
+    descriere: 'Trepte din stejar masiv montate pe structuri de beton turnat. Precizie și durabilitate garantate.',
+  },
+  {
+    titlu: 'Scări drepte pe metal',
+    href: '/produse/scari-drepte-metal',
+    imagine: '/images/uploads/cat-scari-drepte-metal-(4).JPEG',
+    descriere: 'Trepte din stejar masiv adaptate pentru structuri metalice. Design modern și elegant.',
+  },
+  {
+    titlu: 'Scări în unghi pe beton',
+    href: '/produse/scari-unghi-beton',
+    imagine: '/images/uploads/cat-scari-unghi-beton-(8).JPEG',
+    descriere: 'Scări cu podest sau întoarcere, montate pe suport de beton. Soluții pentru orice configurație.',
+  },
+  {
+    titlu: 'Scări în unghi pe metal',
+    href: '/produse/scari-unghi-metal',
+    imagine: '/images/uploads/cat-scari-unghi-metal-(5).JPEG',
+    descriere: 'Scări cu întoarcere pe structuri metalice. Combinație perfectă între rezistență și estetică.',
+  },
 ];
 ---
 
-<Layout title="Produse" descriere="Trepte din lemn masiv pe beton sau metal — scări drepte și în unghi, produse la comandă de Pinro SRL.">
-  <div class="max-w-6xl mx-auto px-6 py-20">
+<Layout title="Produse" descriere="Gama completă de produse Pinro: trepte din lemn masiv, uși, ferestre termopan, mic mobilier și tocătoare ecologice.">
 
-    <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Produse</p>
-    <h1 class="font-heading text-4xl text-stone-900 mb-4">Scări din lemn masiv</h1>
-    <p class="text-stone-500 text-lg mb-16 max-w-xl">Fiecare scară produsă și montată la comandă, după măsurătorile tale exacte.</p>
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-2">Produsele noastre</h1>
+    <p class="text-stone-500 mb-10">Tot ce facem din lemn masiv — de la trepte la tocătoare. Toate personalizate, toate la comandă.</p>
 
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {categorii.map((cat) => (
-        <a href={cat.href} class="group block">
-          <div class="overflow-hidden aspect-video bg-stone-100 mb-4">
-            <img src={cat.imagine} alt={cat.titlu} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <a href={cat.href} class="bg-white rounded-lg overflow-hidden shadow-sm border border-stone-100 hover:shadow-md transition-shadow group">
+          <div class="aspect-video bg-stone-100 overflow-hidden">
+            <img
+              src={cat.imagine}
+              alt={cat.titlu}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
           </div>
-          <div class="flex items-start justify-between">
-            <div>
-              <h2 class="font-heading text-xl text-stone-900 mb-1">{cat.titlu}</h2>
-              <p class="text-sm text-stone-500">{cat.descriere}</p>
-            </div>
-            <span class="text-stone-400 group-hover:text-stone-900 transition-colors mt-1 shrink-0 ml-4">→</span>
+          <div class="p-4">
+            <h2 class="font-semibold text-stone-800">{cat.titlu}</h2>
+            <p class="text-sm text-stone-500 mt-1 leading-snug">{cat.descriere}</p>
           </div>
         </a>
       ))}
     </div>
   </div>
+
 </Layout>

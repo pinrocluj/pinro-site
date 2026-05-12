@@ -19,8 +19,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        heading: ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        sans: ['system-ui', 'Segoe UI', 'sans-serif'],
       },
     },
   },

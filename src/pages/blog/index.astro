@@ -6,32 +6,32 @@ const articole = (await getCollection('blog'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<Layout title="Blog" descriere="Articole Pinro despre trepte din lemn masiv, întreținere și sfaturi practice.">
-  <div class="max-w-4xl mx-auto px-6 py-20">
+<Layout title="Blog" descriere="Articole despre trepte din lemn, sfaturi de întreținere și noutăți Pinro Trepte.">
 
-    <p class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Blog</p>
-    <h1 class="font-heading text-4xl text-stone-900 mb-16">Articole</h1>
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-2">Blog</h1>
+    <p class="text-stone-500 mb-10">Articole despre trepte din lemn, întreținere și sfaturi practice.</p>
 
     {articole.length === 0 ? (
-      <p class="text-stone-400 text-center py-32">Articolele vor apărea după ce sunt adăugate din panoul de administrare.</p>
+      <p class="text-stone-400 text-center py-20">Articolele vor apărea aici după ce sunt adăugate din panoul de administrare.</p>
     ) : (
-      <div class="divide-y divide-stone-100">
+      <div class="flex flex-col gap-8">
         {articole.map((a) => (
-          <a href={`/blog/${a.slug}`} class="group flex gap-6 py-8 items-start">
+          <a href={`/blog/${a.slug}`} class="flex gap-5 bg-white rounded-lg border border-stone-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
             {a.data.imagine && (
-              <div class="w-32 md:w-48 shrink-0 overflow-hidden aspect-video bg-stone-100">
-                <img src={a.data.imagine} alt={a.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="w-40 shrink-0 bg-stone-100 overflow-hidden">
+                <img src={a.data.imagine} alt={a.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               </div>
             )}
-            <div class="flex-1 min-w-0">
-              <p class="text-xs text-stone-400 mb-2">{a.data.date.toLocaleDateString('ro-RO')}</p>
-              <h2 class="font-heading text-xl text-stone-900 leading-snug mb-2 group-hover:text-lemn-700 transition-colors">{a.data.title}</h2>
-              {a.data.descriere && <p class="text-stone-500 text-sm leading-relaxed line-clamp-2">{a.data.descriere}</p>}
+            <div class="p-4">
+              <p class="text-xs text-stone-400 mb-1">{a.data.date.toLocaleDateString('ro-RO')}</p>
+              <h2 class="font-semibold text-stone-800 text-lg leading-snug">{a.data.title}</h2>
+              {a.data.descriere && <p class="text-stone-500 text-sm mt-2 line-clamp-2">{a.data.descriere}</p>}
             </div>
-            <span class="text-stone-400 group-hover:text-stone-900 transition-colors shrink-0 mt-1 hidden md:block">→</span>
           </a>
         ))}
       </div>
     )}
   </div>
+
 </Layout>
