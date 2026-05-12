@@ -17,7 +17,8 @@
       "Bash(Get-Content \"C:\\\\Users\\\\vaida\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-vaida-Documents-pinro-site\\\\93662581-a4bf-4139-bf8e-d2eefb64f956\\\\tasks\\\\b9n6tn083.output\")",
       "Bash(Get-ChildItem -Recurse \"C:\\\\Users\\\\vaida\\\\My Drive \\(transilvaniamicrofarm@gmail.com\\)\\\\Site\\\\Content V2\")",
       "Bash(Select-Object FullName, Length)",
-      "Bash(Format-Table -AutoSize)"
+      "Bash(Format-Table -AutoSize)",
+      "PowerShell(Copy-Item *)"
     ]
   }
 }
