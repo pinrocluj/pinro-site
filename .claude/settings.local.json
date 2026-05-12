@@ -9,7 +9,12 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git branch *)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(git config *)",
+      "Bash(git push *)",
+      "Bash(Get-Content \"C:\\\\Users\\\\vaida\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-vaida-Documents-pinro-site\\\\93662581-a4bf-4139-bf8e-d2eefb64f956\\\\tasks\\\\b9n6tn083.output\" -Wait -Tail 20)",
+      "Bash(Start-Sleep -Seconds 15)",
+      "Bash(Get-Content \"C:\\\\Users\\\\vaida\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-vaida-Documents-pinro-site\\\\93662581-a4bf-4139-bf8e-d2eefb64f956\\\\tasks\\\\b9n6tn083.output\")"
     ]
   }
 }

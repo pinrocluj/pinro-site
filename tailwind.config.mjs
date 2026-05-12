@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography';
+
 export default {
   content: ['./src/**/*.{astro,html,js,ts,jsx,tsx,md,mdx}'],
   theme: {
@@ -17,8 +19,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Georgia', 'Cambria', 'serif'],
+        sans: ['system-ui', 'Segoe UI', 'sans-serif'],
       },
     },
   },
+  plugins: [typography],
 };
