@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const lucrari = (await getCollection('portofoliu')).slice(0, 3);
+const articole = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<Layout title="Acasă">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-lemn-800 to-lemn-900 text-white py-24 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+        Trepte din lemn masiv,<br />montate cu precizie
+      </h1>
+      <p class="text-lemn-200 text-lg mb-8 max-w-xl mx-auto">
+        Producem și montăm trepte din lemn pe suport de beton sau metal. Fiecare proiect este personalizat.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/contact" class="bg-white text-lemn-800 font-semibold px-6 py-3 rounded hover:bg-lemn-50 transition-colors">
+          Cere o ofertă gratuită
+        </a>
+        <a href="/portofoliu" class="border border-lemn-300 text-white px-6 py-3 rounded hover:bg-lemn-700 transition-colors">
+          Vezi portofoliu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avantaje -->
+  <section class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-3 gap-8 text-center">
+    <div class="p-6 bg-white rounded-lg shadow-sm border border-stone-100">
+      <div class="text-4xl mb-3">🪵</div>
+      <h2 class="font-bold text-lg mb-2">Lemn masiv certificat</h2>
+      <p class="text-stone-600 text-sm">Lucrăm cu stejar, fag și frasin din surse verificate. Grosimi de la 40mm la 80mm.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow-sm border border-stone-100">
+      <div class="text-4xl mb-3">🏗️</div>
+      <h2 class="font-bold text-lg mb-2">Beton sau metal</h2>
+      <p class="text-stone-600 text-sm">Montăm pe orice tip de structură. Adaptăm fiecare treaptă la specificul construcției.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow-sm border border-stone-100">
+      <div class="text-4xl mb-3">✅</div>
+      <h2 class="font-bold text-lg mb-2">Garanție la montaj</h2>
+      <p class="text-stone-600 text-sm">Oferim garanție pentru calitatea montajului și a materialelor folosite.</p>
+    </div>
+  </section>
+
+  <!-- Portofoliu recent -->
+  {lucrari.length > 0 && (
+    <section class="bg-stone-100 py-16 px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8 text-center">Lucrări recente</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {lucrari.map((l) => (
+            <a href={`/portofoliu/${l.slug}`} class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div class="aspect-video bg-stone-200 overflow-hidden">
+                {l.data.imagine_principala && (
+                  <img src={l.data.imagine_principala} alt={l.data.titlu} class="w-full h-full object-cover" />
+                )}
+              </div>
+              <div class="p-4">
+                <p class="font-semibold text-stone-800">{l.data.titlu}</p>
+                <p class="text-sm text-lemn-600 mt-1 capitalize">Suport: {l.data.suport}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div class="text-center mt-8">
+          <a href="/portofoliu" class="text-lemn-700 font-medium hover:underline">Vezi toate lucrările →</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Blog recent -->
+  {articole.length > 0 && (
+    <section class="max-w-5xl mx-auto px-4 py-16">
+      <h2 class="text-2xl font-bold mb-8 text-center">Ultimele articole</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {articole.map((a) => (
+          <a href={`/blog/${a.slug}`} class="bg-white rounded-lg overflow-hidden shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
+            {a.data.imagine && (
+              <div class="aspect-video bg-stone-100 overflow-hidden">
+                <img src={a.data.imagine} alt={a.data.title} class="w-full h-full object-cover" />
+              </div>
+            )}
+            <div class="p-4">
+              <p class="text-xs text-stone-400 mb-1">{a.data.date.toLocaleDateString('ro-RO')}</p>
+              <p class="font-semibold text-stone-800 leading-snug">{a.data.title}</p>
+              {a.data.descriere && <p class="text-sm text-stone-500 mt-2 line-clamp-2">{a.data.descriere}</p>}
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/blog" class="text-lemn-700 font-medium hover:underline">Toate articolele →</a>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA final -->
+  <section class="bg-lemn-700 text-white py-16 px-4 text-center">
+    <h2 class="text-2xl font-bold mb-3">Ai un proiect în minte?</h2>
+    <p class="text-lemn-200 mb-6 max-w-md mx-auto">Trimite-ne un mesaj sau sună-ne. Răspundem în aceeași zi lucrătoare.</p>
+    <a href="/contact" class="bg-white text-lemn-800 font-semibold px-8 py-3 rounded hover:bg-lemn-50 transition-colors inline-block">
+      Contactează-ne
+    </a>
+  </section>
+
+</Layout>

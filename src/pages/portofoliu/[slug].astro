@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const lucrari = await getCollection('portofoliu');
+  return lucrari.map((l) => ({ params: { slug: l.slug } }));
+}
+
+const { slug } = Astro.params;
+const lucrare = await getEntry('portofoliu', slug);
+if (!lucrare) return Astro.redirect('/portofoliu');
+
+const { Content } = await lucrare.render();
+---
+
+<Layout title={lucrare.data.titlu} descriere={lucrare.data.descriere}>
+
+  <div class="max-w-3xl mx-auto px-4 py-12">
+
+    <a href="/portofoliu" class="text-sm text-lemn-600 hover:underline mb-6 inline-block">← Înapoi la portofoliu</a>
+
+    <h1 class="text-3xl font-bold mb-2">{lucrare.data.titlu}</h1>
+    <div class="flex items-center gap-3 mb-6 text-sm text-stone-500">
+      <span class="bg-lemn-100 text-lemn-700 px-2 py-0.5 rounded capitalize">Suport: {lucrare.data.suport}</span>
+      {lucrare.data.an && <span>{lucrare.data.an}</span>}
+    </div>
+
+    {lucrare.data.imagine_principala && (
+      <img
+        src={lucrare.data.imagine_principala}
+        alt={lucrare.data.titlu}
+        class="w-full rounded-lg mb-8 shadow-sm"
+      />
+    )}
+
+    {lucrare.data.galerie && lucrare.data.galerie.length > 0 && (
+      <div class="grid grid-cols-2 gap-3 mb-8">
+        {lucrare.data.galerie.map((foto: string) => (
+          <img src={foto} alt={lucrare.data.titlu} class="rounded-lg w-full object-cover aspect-video" />
+        ))}
+      </div>
+    )}
+
+    <div class="prose prose-stone max-w-none">
+      <Content />
+    </div>
+
+  </div>
+
+</Layout>

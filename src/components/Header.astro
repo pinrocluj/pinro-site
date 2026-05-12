@@ -1,0 +1,68 @@
+---
+const nav = [
+  { href: '/',            label: 'Acasă' },
+  { href: '/portofoliu',  label: 'Portofoliu' },
+  { href: '/blog',        label: 'Blog' },
+  { href: '/contact',     label: 'Contact' },
+];
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="bg-white border-b border-stone-200 sticky top-0 z-50">
+  <div class="max-w-5xl mx-auto px-4 flex items-center justify-between h-16">
+
+    <a href="/" class="flex items-center gap-2 font-bold text-xl text-lemn-700 hover:text-lemn-800">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="6" rx="2" fill="#a66018"/>
+        <rect y="11" width="28" height="6" rx="2" fill="#c47d20"/>
+        <rect y="22" width="28" height="6" rx="2" fill="#dd9a3c"/>
+      </svg>
+      Pinro Trepte
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      {nav.map(({ href, label }) => (
+        <a
+          href={href}
+          class={`transition-colors ${
+            pathname === href
+              ? 'text-lemn-700 border-b-2 border-lemn-500 pb-0.5'
+              : 'text-stone-600 hover:text-lemn-700'
+          }`}
+        >
+          {label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="bg-lemn-600 text-white px-4 py-1.5 rounded hover:bg-lemn-700 transition-colors"
+      >
+        Cere ofertă
+      </a>
+    </nav>
+
+    <!-- Mobile menu button -->
+    <button id="menu-btn" class="md:hidden p-2 text-stone-600" aria-label="Deschide meniu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav id="mobile-nav" class="hidden md:hidden bg-white border-t border-stone-100 px-4 py-3 flex flex-col gap-3 text-sm font-medium">
+    {nav.map(({ href, label }) => (
+      <a href={href} class="text-stone-700 hover:text-lemn-700">{label}</a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const nav = document.getElementById('mobile-nav');
+  btn?.addEventListener('click', () => nav?.classList.toggle('hidden'));
+</script>

@@ -1,0 +1,139 @@
+# IMPORTANT: înlocuiește "GITHUB_USERNAME" cu numele tău de cont GitHub
+backend:
+  name: github
+  repo: pinrocluj/pinro-site
+  branch: main
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+locale: ro
+
+collections:
+
+  # ── ARTICOLE BLOG ──────────────────────────────────────────
+  - name: blog
+    label: "Articole Blog"
+    label_singular: "Articol"
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Titlu articol"
+        name: title
+        widget: string
+        hint: "Titlul care apare în pagină și în browser"
+
+      - label: "Data publicării"
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+
+      - label: "Imagine principală"
+        name: imagine
+        widget: image
+        required: false
+        hint: "Poza care apare pe card și la început de articol"
+
+      - label: "Descriere scurtă"
+        name: descriere
+        widget: text
+        required: false
+        hint: "1-2 propoziții rezumat, apare în lista de articole"
+
+      - label: "Conținut articol"
+        name: body
+        widget: markdown
+
+  # ── PORTOFOLIU ─────────────────────────────────────────────
+  - name: portofoliu
+    label: "Portofoliu"
+    label_singular: "Lucrare"
+    folder: src/content/portofoliu
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Titlu lucrare"
+        name: titlu
+        widget: string
+        hint: "ex: Scară dreaptă, stejar, Cluj-Napoca"
+
+      - label: "Tip suport"
+        name: suport
+        widget: select
+        options:
+          - { label: "Beton", value: "beton" }
+          - { label: "Metal", value: "metal" }
+          - { label: "Ambele", value: "ambele" }
+
+      - label: "Imagine principală"
+        name: imagine_principala
+        widget: image
+        hint: "Prima poză care apare pe card"
+
+      - label: "Galerie foto (opțional)"
+        name: galerie
+        widget: list
+        required: false
+        field:
+          label: "Fotografie"
+          name: foto
+          widget: image
+        hint: "Adaugă mai multe poze pentru pagina lucrării"
+
+      - label: "Anul realizării"
+        name: an
+        widget: number
+        required: false
+        value_type: int
+
+      - label: "Descriere scurtă"
+        name: descriere
+        widget: text
+        required: false
+        hint: "Apare pe cardul din galerie"
+
+      - label: "Detalii complete"
+        name: body
+        widget: markdown
+        required: false
+        hint: "Text detaliat care apare pe pagina lucrării"
+
+  # ── SETĂRI SITE ────────────────────────────────────────────
+  - name: setari
+    label: "Setări site"
+    files:
+      - name: contact
+        label: "Informații contact (telefon, adresă, program)"
+        file: src/data/contact.json
+        fields:
+          - label: "Telefon"
+            name: telefon
+            widget: string
+            hint: "ex: 0700 123 456"
+
+          - label: "Email"
+            name: email
+            widget: string
+
+          - label: "Adresă"
+            name: adresa
+            widget: string
+            hint: "Stradă, număr, oraș"
+
+          - label: "Program"
+            name: program
+            widget: text
+            hint: "Scrie fiecare zi pe linie nouă, ex: Luni-Vineri: 08:00-18:00"
+
+          - label: "Link Facebook (opțional)"
+            name: facebook
+            widget: string
+            required: false
+
+          - label: "Link Instagram (opțional)"
+            name: instagram
+            widget: string
+            required: false

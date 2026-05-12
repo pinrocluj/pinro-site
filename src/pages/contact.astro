@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import contact from '../data/contact.json';
+---
+
+<Layout title="Contact" descriere="Contactează-ne pentru un deviz gratuit. Telefon, email și adresă Pinro Trepte.">
+
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-2">Contact</h1>
+    <p class="text-stone-500 mb-10">Suntem disponibili pentru întrebări și devize gratuite.</p>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+
+      <!-- Date de contact -->
+      <div class="bg-white rounded-lg border border-stone-100 shadow-sm p-6 space-y-5">
+        <div>
+          <p class="text-xs font-semibold text-stone-400 uppercase tracking-wide mb-1">Telefon</p>
+          <a href={`tel:${contact.telefon.replace(/\s/g,'')}`} class="text-xl font-bold text-lemn-700 hover:underline">
+            {contact.telefon}
+          </a>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-stone-400 uppercase tracking-wide mb-1">Email</p>
+          <a href={`mailto:${contact.email}`} class="text-lemn-700 hover:underline">{contact.email}</a>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-stone-400 uppercase tracking-wide mb-1">Adresă</p>
+          <p class="text-stone-700">{contact.adresa}</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-stone-400 uppercase tracking-wide mb-1">Program</p>
+          <p class="text-stone-700 text-sm whitespace-pre-line leading-relaxed">{contact.program}</p>
+        </div>
+        {(contact.facebook || contact.instagram) && (
+          <div class="flex gap-3 pt-2">
+            {contact.facebook && (
+              <a href={contact.facebook} target="_blank" rel="noopener" class="text-sm text-lemn-600 hover:underline">Facebook</a>
+            )}
+            {contact.instagram && (
+              <a href={contact.instagram} target="_blank" rel="noopener" class="text-sm text-lemn-600 hover:underline">Instagram</a>
+            )}
+          </div>
+        )}
+      </div>
+
+      <!-- Formular contact -->
+      <div class="bg-white rounded-lg border border-stone-100 shadow-sm p-6">
+        <h2 class="font-semibold text-lg mb-4">Trimite un mesaj</h2>
+        <form
+          action="https://formspree.io/f/INLOCUIESTE_CU_CODUL_TAU"
+          method="POST"
+          class="space-y-4"
+        >
+          <div>
+            <label for="name" class="block text-sm font-medium text-stone-700 mb-1">Numele tău</label>
+            <input
+              id="name" name="name" type="text" required
+              class="w-full border border-stone-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lemn-400"
+              placeholder="Ion Popescu"
+            />
+          </div>
+          <div>
+            <label for="telefon-form" class="block text-sm font-medium text-stone-700 mb-1">Telefon</label>
+            <input
+              id="telefon-form" name="telefon" type="tel"
+              class="w-full border border-stone-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lemn-400"
+              placeholder="07xx xxx xxx"
+            />
+          </div>
+          <div>
+            <label for="mesaj" class="block text-sm font-medium text-stone-700 mb-1">Mesaj</label>
+            <textarea
+              id="mesaj" name="mesaj" required rows="4"
+              class="w-full border border-stone-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lemn-400"
+              placeholder="Descrieți pe scurt proiectul..."
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-lemn-600 text-white py-2 rounded font-medium hover:bg-lemn-700 transition-colors"
+          >
+            Trimite mesajul
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</Layout>

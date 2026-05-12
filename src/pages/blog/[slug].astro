@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articole = await getCollection('blog');
+  return articole.map((a) => ({ params: { slug: a.slug } }));
+}
+
+const { slug } = Astro.params;
+const articol = await getEntry('blog', slug);
+if (!articol) return Astro.redirect('/blog');
+
+const { Content } = await articol.render();
+---
+
+<Layout title={articol.data.title} descriere={articol.data.descriere}>
+
+  <div class="max-w-3xl mx-auto px-4 py-12">
+
+    <a href="/blog" class="text-sm text-lemn-600 hover:underline mb-6 inline-block">← Înapoi la blog</a>
+
+    <p class="text-sm text-stone-400 mb-2">{articol.data.date.toLocaleDateString('ro-RO')}</p>
+    <h1 class="text-3xl font-bold mb-6">{articol.data.title}</h1>
+
+    {articol.data.imagine && (
+      <img
+        src={articol.data.imagine}
+        alt={articol.data.title}
+        class="w-full rounded-lg mb-8 shadow-sm"
+      />
+    )}
+
+    <div class="prose prose-stone max-w-none">
+      <Content />
+    </div>
+
+  </div>
+
+</Layout>
