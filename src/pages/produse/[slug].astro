@@ -66,10 +66,12 @@ if (!produs) return Astro.redirect('/produse');
           <p class="font-semibold mb-1">Vrei un deviz?</p>
           <p class="text-lemn-100 text-sm mb-4">Răspundem în aceeași zi lucrătoare.</p>
           <a
-            href="/contact"
+            href={`https://wa.me/40758287719?text=Bun%C4%83%20ziua%2C%20a%C8%99%20dori%20un%20deviz%20pentru%20${encodeURIComponent(produs.titlu)}.`}
+            target="_blank"
+            rel="noopener"
             class="block bg-white text-lemn-700 font-semibold py-2 rounded hover:bg-lemn-50 transition-colors text-sm"
           >
-            Cere ofertă gratuită
+            Cere ofertă pe WhatsApp
           </a>
           <a
             href="tel:0758287719"
