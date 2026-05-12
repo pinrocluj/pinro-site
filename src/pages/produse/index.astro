@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const categorii = [
+  {
+    titlu: 'Scări drepte pe beton',
+    href: '/produse/scari-drepte-beton',
+    imagine: '/images/uploads/cat-scari-drepte-beton-(1).JPEG',
+    descriere: 'Trepte din stejar masiv montate pe structuri de beton turnat. Precizie și durabilitate garantate.',
+  },
+  {
+    titlu: 'Scări drepte pe metal',
+    href: '/produse/scari-drepte-metal',
+    imagine: '/images/uploads/cat-scari-drepte-metal-(4).JPEG',
+    descriere: 'Trepte din stejar masiv adaptate pentru structuri metalice. Design modern și elegant.',
+  },
+  {
+    titlu: 'Scări în unghi pe beton',
+    href: '/produse/scari-unghi-beton',
+    imagine: '/images/uploads/cat-scari-unghi-beton-(8).JPEG',
+    descriere: 'Scări cu podest sau întoarcere, montate pe suport de beton. Soluții pentru orice configurație.',
+  },
+  {
+    titlu: 'Scări în unghi pe metal',
+    href: '/produse/scari-unghi-metal',
+    imagine: '/images/uploads/cat-scari-unghi-metal-(5).JPEG',
+    descriere: 'Scări cu întoarcere pe structuri metalice. Combinație perfectă între rezistență și estetică.',
+  },
+  {
+    titlu: 'Uși de interior',
+    href: '/produse/usi-interior',
+    imagine: '/images/uploads/cat-Usi-de-interior-(1).jpg',
+    descriere: 'Uși din lemn masiv pentru interior. Izolație termică și fonică superioară, design personalizat.',
+  },
+  {
+    titlu: 'Ferestre termopan',
+    href: '/produse/ferestre',
+    imagine: '/images/uploads/cat-Ferestre-termopan-din-lemn-(5).jpg',
+    descriere: 'Ferestre termopan cu tâmplărie din lemn masiv. Eficiență energetică și frumusețe naturală.',
+  },
+  {
+    titlu: 'Mic mobilier',
+    href: '/produse/mic-mobilier',
+    imagine: '/images/uploads/cat-mic-mobilier-(2).JPEG',
+    descriere: 'Piese de mic mobilier din lemn masiv, realizate la comandă după specificațiile clientului.',
+  },
+  {
+    titlu: 'Tocătoare ecologice',
+    href: '/produse/tocatoare',
+    imagine: '/images/uploads/tocator-25-pe-20cm.jpg',
+    descriere: 'Tocătoare din lemn recuperat, tratate cu ulei natural. Sustenabile, unice, cadouri perfecte.',
+  },
+];
+---
+
+<Layout title="Produse" descriere="Gama completă de produse Pinro: trepte din lemn masiv, uși, ferestre termopan, mic mobilier și tocătoare ecologice.">
+
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-2">Produsele noastre</h1>
+    <p class="text-stone-500 mb-10">Tot ce facem din lemn masiv — de la trepte la tocătoare. Toate personalizate, toate la comandă.</p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categorii.map((cat) => (
+        <a href={cat.href} class="bg-white rounded-lg overflow-hidden shadow-sm border border-stone-100 hover:shadow-md transition-shadow group">
+          <div class="aspect-video bg-stone-100 overflow-hidden">
+            <img
+              src={cat.imagine}
+              alt={cat.titlu}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-4">
+            <h2 class="font-semibold text-stone-800">{cat.titlu}</h2>
+            <p class="text-sm text-stone-500 mt-1 leading-snug">{cat.descriere}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+</Layout>

@@ -1,103 +1,151 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import contact from '../data/contact.json';
 
 const lucrari = (await getCollection('portofoliu')).slice(0, 3);
 const articole = (await getCollection('blog'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
+
+const categorii = [
+  { titlu: 'Scări drepte pe beton', href: '/produse/scari-drepte-beton', imagine: '/images/uploads/cat-scari-drepte-beton-(1).JPEG' },
+  { titlu: 'Scări drepte pe metal',  href: '/produse/scari-drepte-metal',  imagine: '/images/uploads/cat-scari-drepte-metal-(4).JPEG' },
+  { titlu: 'Scări în unghi pe beton',href: '/produse/scari-unghi-beton',   imagine: '/images/uploads/cat-scari-unghi-beton-(8).JPEG' },
+  { titlu: 'Scări în unghi pe metal', href: '/produse/scari-unghi-metal',  imagine: '/images/uploads/cat-scari-unghi-metal-(5).JPEG' },
+  { titlu: 'Uși de interior',         href: '/produse/usi-interior',       imagine: '/images/uploads/cat-Usi-de-interior-(1).jpg' },
+  { titlu: 'Ferestre termopan',        href: '/produse/ferestre',          imagine: '/images/uploads/cat-Ferestre-termopan-din-lemn-(5).jpg' },
+];
 ---
 
-<Layout title="Acasă">
+<Layout title="Acasă" descriere="SC Pinro SRL — Producție și montaj trepte din lemn masiv, uși, ferestre și mic mobilier. Baciu, Cluj. Tel: 0758 287 719.">
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-lemn-800 to-lemn-900 text-white py-24 px-4">
-    <div class="max-w-3xl mx-auto text-center">
+  <section class="relative bg-stone-900 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-lemn-900/90 to-stone-900/80 z-10"></div>
+    <img
+      src="/images/uploads/scari-unghi-beton-(4).JPEG"
+      alt="Trepte din lemn masiv Pinro"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="relative z-20 max-w-3xl mx-auto px-4 py-28 text-center">
+      <img src="/images/uploads/logo.png" alt="Pinro" class="h-16 mx-auto mb-6" />
       <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
-        Trepte din lemn masiv,<br />montate cu precizie
+        Lemn masiv, montat cu precizie
       </h1>
       <p class="text-lemn-200 text-lg mb-8 max-w-xl mx-auto">
-        Producem și montăm trepte din lemn pe suport de beton sau metal. Fiecare proiect este personalizat.
+        Trepte, uși, ferestre și mic mobilier din lemn masiv — produse la comandă, montate în Cluj și împrejurimi.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/contact" class="bg-white text-lemn-800 font-semibold px-6 py-3 rounded hover:bg-lemn-50 transition-colors">
-          Cere o ofertă gratuită
+        <a href="/contact" class="bg-lemn-500 text-white font-semibold px-6 py-3 rounded hover:bg-lemn-400 transition-colors">
+          Cere ofertă gratuită
         </a>
-        <a href="/portofoliu" class="border border-lemn-300 text-white px-6 py-3 rounded hover:bg-lemn-700 transition-colors">
-          Vezi portofoliu
+        <a href="/portofoliu" class="border border-white/40 text-white px-6 py-3 rounded hover:bg-white/10 transition-colors">
+          Vezi lucrările noastre
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Avantaje -->
-  <section class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-3 gap-8 text-center">
-    <div class="p-6 bg-white rounded-lg shadow-sm border border-stone-100">
-      <div class="text-4xl mb-3">🪵</div>
-      <h2 class="font-bold text-lg mb-2">Lemn masiv certificat</h2>
-      <p class="text-stone-600 text-sm">Lucrăm cu stejar, fag și frasin din surse verificate. Grosimi de la 40mm la 80mm.</p>
+  <!-- Produse -->
+  <section class="max-w-5xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-bold mb-2 text-center">Ce producem</h2>
+    <p class="text-stone-500 text-center mb-10">Orice din lemn masiv, la comandă, pentru orice tip de structură.</p>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {categorii.map((cat) => (
+        <a href={cat.href} class="relative rounded-lg overflow-hidden group aspect-video block">
+          <img src={cat.imagine} alt={cat.titlu} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <span class="absolute bottom-0 left-0 right-0 p-3 text-white text-sm font-semibold leading-snug">{cat.titlu}</span>
+        </a>
+      ))}
     </div>
-    <div class="p-6 bg-white rounded-lg shadow-sm border border-stone-100">
-      <div class="text-4xl mb-3">🏗️</div>
-      <h2 class="font-bold text-lg mb-2">Beton sau metal</h2>
-      <p class="text-stone-600 text-sm">Montăm pe orice tip de structură. Adaptăm fiecare treaptă la specificul construcției.</p>
+    <div class="text-center mt-6">
+      <a href="/produse" class="text-lemn-600 font-medium hover:underline">Toate produsele →</a>
     </div>
-    <div class="p-6 bg-white rounded-lg shadow-sm border border-stone-100">
-      <div class="text-4xl mb-3">✅</div>
-      <h2 class="font-bold text-lg mb-2">Garanție la montaj</h2>
-      <p class="text-stone-600 text-sm">Oferim garanție pentru calitatea montajului și a materialelor folosite.</p>
+  </section>
+
+  <!-- De ce Pinro -->
+  <section class="bg-stone-100 py-16 px-4">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+      <div class="p-6 bg-white rounded-lg shadow-sm">
+        <div class="w-12 h-12 bg-lemn-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-lemn-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Stejar masiv certificat</h3>
+        <p class="text-stone-500 text-sm">Lucrăm exclusiv cu lemn masiv de stejar din surse sustenabile. Grosimi de la 40mm la 80mm.</p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-sm">
+        <div class="w-12 h-12 bg-lemn-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-lemn-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Producție la comandă</h3>
+        <p class="text-stone-500 text-sm">Fiecare piesă e croită după măsurătorile tale exacte. Nu vindem din stoc, producem pentru tine.</p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-sm">
+        <div class="w-12 h-12 bg-lemn-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-lemn-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Cluj și împrejurimi</h3>
+        <p class="text-stone-500 text-sm">Atelier în Baciu, jud. Cluj. Livrăm și montăm în Cluj-Napoca și județul Cluj.</p>
+      </div>
     </div>
   </section>
 
   <!-- Portofoliu recent -->
   {lucrari.length > 0 && (
-    <section class="bg-stone-100 py-16 px-4">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-2xl font-bold mb-8 text-center">Lucrări recente</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          {lucrari.map((l) => (
-            <a href={`/portofoliu/${l.slug}`} class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div class="aspect-video bg-stone-200 overflow-hidden">
-                {l.data.imagine_principala && (
-                  <img src={l.data.imagine_principala} alt={l.data.titlu} class="w-full h-full object-cover" />
-                )}
-              </div>
-              <div class="p-4">
-                <p class="font-semibold text-stone-800">{l.data.titlu}</p>
-                <p class="text-sm text-lemn-600 mt-1 capitalize">Suport: {l.data.suport}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-        <div class="text-center mt-8">
-          <a href="/portofoliu" class="text-lemn-700 font-medium hover:underline">Vezi toate lucrările →</a>
-        </div>
+    <section class="max-w-5xl mx-auto px-4 py-16">
+      <h2 class="text-2xl font-bold mb-8 text-center">Lucrări recente</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {lucrari.map((l) => (
+          <a href={`/portofoliu/${l.slug}`} class="bg-white rounded-lg overflow-hidden shadow-sm border border-stone-100 hover:shadow-md transition-shadow group">
+            <div class="aspect-video bg-stone-200 overflow-hidden">
+              <img src={l.data.imagine_principala} alt={l.data.titlu} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <div class="p-4">
+              <p class="font-semibold text-stone-800 leading-snug">{l.data.titlu}</p>
+              <p class="text-sm text-lemn-600 mt-1 capitalize">Suport: {l.data.suport}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/portofoliu" class="text-lemn-600 font-medium hover:underline">Toate lucrările →</a>
       </div>
     </section>
   )}
 
   <!-- Blog recent -->
   {articole.length > 0 && (
-    <section class="max-w-5xl mx-auto px-4 py-16">
-      <h2 class="text-2xl font-bold mb-8 text-center">Ultimele articole</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        {articole.map((a) => (
-          <a href={`/blog/${a.slug}`} class="bg-white rounded-lg overflow-hidden shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
-            {a.data.imagine && (
-              <div class="aspect-video bg-stone-100 overflow-hidden">
-                <img src={a.data.imagine} alt={a.data.title} class="w-full h-full object-cover" />
+    <section class="bg-stone-50 py-16 px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8 text-center">Din blog</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {articole.map((a) => (
+            <a href={`/blog/${a.slug}`} class="bg-white rounded-lg overflow-hidden shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
+              {a.data.imagine && (
+                <div class="aspect-video bg-stone-100 overflow-hidden">
+                  <img src={a.data.imagine} alt={a.data.title} class="w-full h-full object-cover" />
+                </div>
+              )}
+              <div class="p-4">
+                <p class="text-xs text-stone-400 mb-1">{a.data.date.toLocaleDateString('ro-RO')}</p>
+                <p class="font-semibold text-stone-800 leading-snug">{a.data.title}</p>
               </div>
-            )}
-            <div class="p-4">
-              <p class="text-xs text-stone-400 mb-1">{a.data.date.toLocaleDateString('ro-RO')}</p>
-              <p class="font-semibold text-stone-800 leading-snug">{a.data.title}</p>
-              {a.data.descriere && <p class="text-sm text-stone-500 mt-2 line-clamp-2">{a.data.descriere}</p>}
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="text-center mt-8">
-        <a href="/blog" class="text-lemn-700 font-medium hover:underline">Toate articolele →</a>
+            </a>
+          ))}
+        </div>
+        <div class="text-center mt-8">
+          <a href="/blog" class="text-lemn-600 font-medium hover:underline">Toate articolele →</a>
+        </div>
       </div>
     </section>
   )}
@@ -105,9 +153,12 @@ const articole = (await getCollection('blog'))
   <!-- CTA final -->
   <section class="bg-lemn-700 text-white py-16 px-4 text-center">
     <h2 class="text-2xl font-bold mb-3">Ai un proiect în minte?</h2>
-    <p class="text-lemn-200 mb-6 max-w-md mx-auto">Trimite-ne un mesaj sau sună-ne. Răspundem în aceeași zi lucrătoare.</p>
+    <p class="text-lemn-100 mb-2 max-w-md mx-auto">Sună-ne sau trimite un mesaj. Răspundem în aceeași zi lucrătoare.</p>
+    <p class="text-lemn-200 text-xl font-bold mb-6">
+      <a href={`tel:${contact.telefon.replace(/\s/g,'')}`} class="hover:text-white">{contact.telefon}</a>
+    </p>
     <a href="/contact" class="bg-white text-lemn-800 font-semibold px-8 py-3 rounded hover:bg-lemn-50 transition-colors inline-block">
-      Contactează-ne
+      Scrie-ne un mesaj
     </a>
   </section>
 

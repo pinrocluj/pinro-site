@@ -1,12 +1,13 @@
 ---
-titlu: "Scară dreaptă, stejar, suport beton — Cluj-Napoca"
+titlu: "Scară dreaptă din stejar pe suport beton"
 suport: "beton"
-imagine_principala: "/images/uploads/scara-1.jpg"
-galerie: []
+imagine_principala: "/images/uploads/scari-drepte-beton-(1).JPEG"
+galerie:
+  - "/images/uploads/scari-drepte-beton-(2).JPEG"
 an: 2024
-descriere: "Treaptă din stejar masiv 60mm, montată pe structură de beton turnat. Finisaj ulei natural."
+descriere: "Trepte din stejar masiv 60mm pe structură de beton. Finisaj ulei natural. Baluștri și mână curentă din lemn."
 ---
 
-Proiect realizat pentru o casă particulară din Cluj-Napoca. Clientul a dorit un aspect cald, natural, în contrast cu pereții albi.
+Proiect realizat pentru o casă particulară. Treptele sunt din stejar masiv cu grosimea de 60mm, montate pe structură de beton cu adeziv poliuretanic de înaltă rezistență.
 
-Treptele sunt din stejar masiv cu grosimea de 60mm, uluit cu ulei natural Osmo în nuanța „roble".
+Finisajul este ulei natural cu nuanță deschisă, care păstrează textura și culoarea autentică a stejarului. Balustrada include mână curentă și baluștri din lemn profilat.

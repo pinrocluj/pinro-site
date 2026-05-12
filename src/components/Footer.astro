@@ -3,30 +3,48 @@ import contact from '../data/contact.json';
 const an = new Date().getFullYear();
 ---
 
-<footer class="bg-stone-800 text-stone-300 mt-20">
-  <div class="max-w-5xl mx-auto px-4 py-12 grid gap-8 md:grid-cols-3">
+<footer class="bg-stone-900 text-stone-300 mt-20">
+  <div class="max-w-5xl mx-auto px-4 py-12 grid gap-8 md:grid-cols-4">
 
-    <div>
-      <p class="font-bold text-white text-lg mb-2">Pinro Trepte</p>
-      <p class="text-sm leading-relaxed">Producție și montaj trepte din lemn masiv pe suport de beton sau metal.</p>
+    <div class="md:col-span-1">
+      <img src="/images/uploads/logo.png" alt="Pinro logo" class="h-12 w-auto mb-3" />
+      <p class="text-sm leading-relaxed text-stone-400">Producție și montaj lemn masiv: trepte, uși, ferestre, mic mobilier.</p>
     </div>
 
     <div>
-      <p class="font-semibold text-white mb-2">Contact</p>
-      <ul class="text-sm space-y-1">
-        <li><a href={`tel:${contact.telefon.replace(/\s/g,'')}`} class="hover:text-white">{contact.telefon}</a></li>
-        <li><a href={`mailto:${contact.email}`} class="hover:text-white">{contact.email}</a></li>
-        <li>{contact.adresa}</li>
+      <p class="font-semibold text-white mb-3">Produse</p>
+      <ul class="text-sm space-y-1.5 text-stone-400">
+        <li><a href="/produse/scari-drepte-beton" class="hover:text-white transition-colors">Scări drepte pe beton</a></li>
+        <li><a href="/produse/scari-drepte-metal" class="hover:text-white transition-colors">Scări drepte pe metal</a></li>
+        <li><a href="/produse/scari-unghi-beton" class="hover:text-white transition-colors">Scări în unghi pe beton</a></li>
+        <li><a href="/produse/scari-unghi-metal" class="hover:text-white transition-colors">Scări în unghi pe metal</a></li>
+        <li><a href="/produse/usi-interior" class="hover:text-white transition-colors">Uși de interior</a></li>
+        <li><a href="/produse/ferestre" class="hover:text-white transition-colors">Ferestre termopan</a></li>
       </ul>
     </div>
 
     <div>
-      <p class="font-semibold text-white mb-2">Program</p>
-      <p class="text-sm whitespace-pre-line leading-relaxed">{contact.program}</p>
+      <p class="font-semibold text-white mb-3">Contact</p>
+      <ul class="text-sm space-y-2 text-stone-400">
+        <li><a href={`tel:${contact.telefon.replace(/\s/g,'')}`} class="hover:text-white transition-colors">{contact.telefon}</a></li>
+        <li><a href={`mailto:${contact.email}`} class="hover:text-white transition-colors">{contact.email}</a></li>
+        <li class="leading-snug">{contact.adresa}</li>
+        <li>{contact.program}</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-semibold text-white mb-3">Urmărește-ne</p>
+      <ul class="text-sm space-y-2 text-stone-400">
+        {contact.facebook && <li><a href={contact.facebook} target="_blank" rel="noopener" class="hover:text-white transition-colors">Facebook</a></li>}
+        {contact.instagram && <li><a href={contact.instagram} target="_blank" rel="noopener" class="hover:text-white transition-colors">Instagram</a></li>}
+        {contact.youtube && <li><a href={contact.youtube} target="_blank" rel="noopener" class="hover:text-white transition-colors">YouTube</a></li>}
+        {contact.twitter && <li><a href={contact.twitter} target="_blank" rel="noopener" class="hover:text-white transition-colors">X (Twitter)</a></li>}
+      </ul>
     </div>
 
   </div>
-  <div class="border-t border-stone-700 text-center text-xs text-stone-500 py-4">
-    © {an} Pinro Trepte. Toate drepturile rezervate.
+  <div class="border-t border-stone-800 text-center text-xs text-stone-500 py-4">
+    © {an} SC PINRO SRL · Strada Cosmos nr. 8, Baciu, jud. Cluj · CIF: —
   </div>
 </footer>
